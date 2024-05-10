@@ -1,13 +1,15 @@
-import { FC } from 'react';
+import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import GoogleLogin from './components/Google';
 
 type LoginProps = NativeStackScreenProps<StackNavigation, 'LOGIN'>;
 
-const LoginScreen: FC<LoginProps> = () => {
+const LoginScreen: React.FC<LoginProps> = () => {
   return (
     <View style={styles.theme}>
       <Text>Login </Text>
+      <GoogleLogin />
     </View>
   );
 };
