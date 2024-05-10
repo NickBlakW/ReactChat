@@ -19,7 +19,7 @@ jobs:
         with:
           cmd: install
 
-      - name: Lint
+      - name: Run install
         uses: borales/actions-yarn@v4
         with:
           cmd: lint
