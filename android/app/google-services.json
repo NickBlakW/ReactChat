@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "751933296007",
+    "firebase_url": "https://reactchat-af0c4-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "reactchat-af0c4",
+    "storage_bucket": "reactchat-af0c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751933296007:android:e9456909349226c9565722",
+        "android_client_info": {
+          "package_name": "com.reactchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751933296007-d40dteqgio40pemffgnlp2r3qu6aubvi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0QBlhgwFEuVVZewKQkEv3MWj7F4mW_Eg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751933296007-d40dteqgio40pemffgnlp2r3qu6aubvi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
