@@ -5,29 +5,45 @@
  * @format
  */
 import * as React from 'react';
-import { FC, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import {
   StackNavigationOptions,
   createStackNavigator,
 } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { LoginScreen } from './components/Login';
 import BootSplash from 'react-native-bootsplash';
+import { useEffectAsync } from './hooks';
+import auth from '@react-native-firebase/auth';
+import { HomeScreen } from './components/Home';
+import { User } from 'firebase/auth';
+import { Text } from 'react-native';
 
 const Stack = createStackNavigator<StackNavigation>();
 
 const App: FC = () => {
-  useEffect(() => {
-    (async () => {
-      await BootSplash.hide({ fade: true });
-    })();
+  const [initializing, setInitializing] = useState<boolean>(true);
+  const [user, setUser] = useState<User>();
+
+  useEffectAsync(async () => {
+    await BootSplash.hide({ fade: true });
   }, []);
+
+  const handleAuthStateChanged = (user: any) => {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  };
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(handleAuthStateChanged);
+    return subscriber;
+  });
 
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={screenOptionStyles}>
-        <Stack.Screen name="LOGIN" component={LoginScreen} />
+        <Stack.Screen name="HOME" component={HomeScreen} />
       </Stack.Navigator>
+      <>{user ? <Text>{user.displayName}</Text> : <Text>Not logged in</Text>}</>
     </NavigationContainer>
   );
 };

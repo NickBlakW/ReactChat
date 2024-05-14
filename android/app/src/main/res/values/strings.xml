@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ReactChat</string>
+    <string name="facebook_app_id">1127985585098355</string>
+    <string name="facebook_client_token">4f373fb05305f5ee9f52b3b81002c2fc</string>
 </resources>
