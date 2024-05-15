@@ -3,12 +3,15 @@ import {
   GoogleSignin,
   GoogleSigninButton,
   statusCodes,
-} from '@react-native-community/google-signin';
+} from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 import { Button } from 'react-native';
 import { useEffect } from 'react';
+import { useAuth } from '../../../contexts/auth/AuthContext';
 
 const GoogleLogin: React.FC = () => {
+  const { signInWithGoogle } = useAuth();
+
   useEffect(() => {
     GoogleSignin.configure({
       scopes: ['email'],
@@ -20,26 +23,11 @@ const GoogleLogin: React.FC = () => {
     });
   }, []);
 
-  const onGoogleButtonPress = async () => {
-    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-
-    const { idToken } = await GoogleSignin.signIn();
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-    return auth().signInWithCredential(googleCredential);
-  };
-
   return (
     <GoogleSigninButton
       size={GoogleSigninButton.Size.Wide}
       color={GoogleSigninButton.Color.Dark}
-      onPress={
-        () =>
-          onGoogleButtonPress().then(() => {
-            console.log('Logged in');
-          })
-        //.catch(err => console.log(err))
-      }
+      onPress={signInWithGoogle}
     />
   );
 };

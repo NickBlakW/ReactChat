@@ -10,12 +10,12 @@
       "client_info": {
         "mobilesdk_app_id": "1:751933296007:android:e9456909349226c9565722",
         "android_client_info": {
-          "package_name": "com.reactchat"
+          "package_name": "com.nickblakw.reactchat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "751933296007-d40dteqgio40pemffgnlp2r3qu6aubvi.apps.googleusercontent.com",
+          "client_id": "751933296007-400rie9533qfqer5kc4lc9v4lo3mpv1k.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -28,7 +28,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "751933296007-d40dteqgio40pemffgnlp2r3qu6aubvi.apps.googleusercontent.com",
+              "client_id": "751933296007-400rie9533qfqer5kc4lc9v4lo3mpv1k.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -7,7 +7,6 @@ import FacebookLogin from './components/Facebook';
 const LoginScreen: React.FC = () => {
   return (
     <View style={styles.theme}>
-      <Text>Login </Text>
       <GoogleLogin />
       <FacebookLogin />
     </View>
