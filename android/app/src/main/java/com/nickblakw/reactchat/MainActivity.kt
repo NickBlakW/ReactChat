@@ -1,4 +1,4 @@
-package com.reactchat
+package com.nickblakw.reactchat
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
@@ -6,6 +6,7 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnable
 import com.facebook.react.defaults.DefaultReactActivityDelegate
 import android.os.Bundle
 import com.zoontek.rnbootsplash.RNBootSplash
+import com.facebook.FacebookSdk
 
 class MainActivity : ReactActivity() {
 
