@@ -20,15 +20,17 @@ export const useLoadingAsync = <T>(
     setIsLoading(true);
     (async () => {
       try {
-        const res = await callback();
-        if (!activeRef.current) return;
+        await callback();
+        if (!activeRef.current) {
+          return;
+        }
         setIsLoading(false);
       } catch (err) {
         setError(err);
         setIsLoading(false);
       }
     })();
-  }, [...deps]);
+  }, [callback, deps]);
 
   return { loading: isLoading, error };
 };

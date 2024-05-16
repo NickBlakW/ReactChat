@@ -22,7 +22,9 @@ export const AuthContextValue = (): AuthContextHook => {
 
   const handleAuthStateChanged = (user: any) => {
     setUser(user);
-    if (initializing) setInitializing(false);
+    if (initializing) {
+      setInitializing(false);
+    }
   };
 
   useEffect(() => {
@@ -55,11 +57,15 @@ export const AuthContextValue = (): AuthContextHook => {
       'public_profile, email',
     ]);
 
-    if (result.isCancelled) throw 'User cancelled login process';
+    if (result.isCancelled) {
+      throw 'User cancelled login process';
+    }
 
     const data = await AccessToken.getCurrentAccessToken();
 
-    if (!data) throw 'Something went wrong obtaining the access token';
+    if (!data) {
+      throw 'Something went wrong obtaining the access token';
+    }
 
     const fbCredential = auth.FacebookAuthProvider.credential(data.accessToken);
 

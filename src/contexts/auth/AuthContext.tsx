@@ -15,7 +15,9 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
 
-  if (!context) throw new Error('Auth context not used within provider');
+  if (!context) {
+    throw new Error('Auth context not used within provider');
+  }
 
   return context;
 };

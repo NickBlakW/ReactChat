@@ -2,10 +2,7 @@ import * as React from 'react';
 import {
   GoogleSignin,
   GoogleSigninButton,
-  statusCodes,
 } from '@react-native-google-signin/google-signin';
-import auth from '@react-native-firebase/auth';
-import { Button } from 'react-native';
 import { useEffect } from 'react';
 import { useAuth } from '../../../contexts/auth/AuthContext';
 

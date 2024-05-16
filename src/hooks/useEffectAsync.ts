@@ -6,5 +6,5 @@ export const useEffectAsync = (
 ): void => {
   useEffect(() => {
     callback();
-  }, [...deps]);
+  }, [callback, deps]);
 };

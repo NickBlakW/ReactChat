@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StyleSheet, View } from 'react-native';
 import GoogleLogin from './components/Google';
 import FacebookLogin from './components/Facebook';
 

@@ -16,9 +16,6 @@ import { useEffectAsync } from './hooks';
 import { HomeScreen } from './components/Home';
 import { AuthContextProvider } from './contexts';
 import StackHeader from './components/StackHeader/StackHeader';
-import { LoginScreen } from './components/Login';
-import { Button, Text } from 'react-native';
-import auth from '@react-native-firebase/auth';
 
 const Stack = createStackNavigator<StackNavigation>();
 
