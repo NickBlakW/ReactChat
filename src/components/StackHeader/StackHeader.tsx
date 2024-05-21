@@ -1,13 +1,7 @@
-import {
-  Button,
-  Image,
-  Modal,
-  Pressable,
-  View,
-  StyleSheet,
-} from 'react-native';
+import { Image, Pressable, View, StyleSheet, Text } from 'react-native';
 import { useAuth } from '../../contexts';
 import React, { useState } from 'react';
+import OptionsModal from './components/OptionsModal';
 
 const StackHeader: React.FC = () => {
   const { user, logoutFromProvider } = useAuth();
@@ -20,66 +14,53 @@ const StackHeader: React.FC = () => {
   };
 
   return (
-    <View>
+    <>
       <View style={styles.headerContainer}>
         <Image
           style={styles.logo}
           source={require('../../../assets/logo.png')}
         />
-        {user && (
-          <Pressable onPress={() => setModalVisable(!modalVisible)}>
+        <Pressable
+          style={styles.alignView}
+          onPress={() => setModalVisable(!modalVisible)}>
+          {user ? (
             <Image
               style={styles.userImage}
               source={{ uri: user?.photoURL || '' }}
             />
-          </Pressable>
-        )}
+          ) : (
+            <View>
+              <Text>Log In</Text>
+            </View>
+          )}
+        </Pressable>
       </View>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisable(!modalVisible)}>
-        <View style={styles.modalView}>
-          <View style={styles.modalContent}>
-            <Button title={'Sign Out'} onPress={onModalLogoutPress} />
-          </View>
-        </View>
-      </Modal>
-    </View>
+      <OptionsModal isOpen={modalVisible} setIsOpen={setModalVisable} />
+    </>
   );
 };
 
 const styles = StyleSheet.create({
   headerContainer: {
     display: 'flex',
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 'auto',
+    width: '100%',
   },
   logo: {
     height: 80,
     width: 100,
+    marginTop: '-3%',
+  },
+  alignView: {
+    marginTop: '5%',
   },
   userImage: {
     width: 40,
     height: 40,
     borderRadius: 50,
-    marginTop: 20,
-    marginLeft: 200,
-  },
-  modalView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalContent: {
-    height: 600,
-    width: 350,
-    borderWidth: 2,
-    borderColor: '#000',
-    borderRadius: 20,
+    marginTop: '-25%',
   },
 });
 

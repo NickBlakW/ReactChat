@@ -90,5 +90,10 @@ export const AuthContextValue = (): AuthContextHook => {
   };
   //#endregion
 
-  return { user, signInWithGoogle, signInWithFacebook, logoutFromProvider };
+  return {
+    user,
+    signInWithGoogle,
+    signInWithFacebook,
+    logoutFromProvider,
+  };
 };
