@@ -4,14 +4,9 @@ import React, { useState } from 'react';
 import OptionsModal from '../common/OptionsModal';
 
 const StackHeader: React.FC = () => {
-  const { user, logoutFromProvider } = useAuth();
+  const { user } = useAuth();
 
   const [modalVisible, setModalVisable] = useState<boolean>(false);
-
-  const onModalLogoutPress = async () => {
-    setModalVisable(!modalVisible);
-    await logoutFromProvider();
-  };
 
   return (
     <>

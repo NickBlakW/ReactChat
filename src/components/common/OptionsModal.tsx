@@ -31,21 +31,14 @@ const OptionsModal: FC<OptionsModalProps> = ({ isOpen, setIsOpen }) => {
       onRequestClose={() => setIsOpen(!isOpen)}>
       <View style={styles.modalView}>
         <View style={styles.modalContent}>
-          <View style={{ flex: 1 }}>
+          <View style={styles.modalInnerView}>
             <TouchableOpacity
               onPress={() => setIsOpen(!isOpen)}
-              style={{
-                width: 'auto',
-                height: 'auto',
-                backgroundColor: '#aaa',
-                alignItems: 'center',
-                opacity: 60,
-                borderRadius: 20,
-              }}>
-              <Text style={{ fontSize: 25, color: '#000' }}>X</Text>
+              style={styles.modalCloseButton}>
+              <Text style={styles.modalContentText}>X</Text>
             </TouchableOpacity>
           </View>
-          <View style={{ flex: 1 }}>
+          <View style={styles.modalInnerView}>
             {!user ? (
               <LoginScreen />
             ) : (
@@ -71,6 +64,21 @@ const styles = StyleSheet.create({
     padding: 40,
     borderWidth: 2,
     borderColor: '#000',
+    borderRadius: 20,
+  },
+  modalContentText: {
+    fontSize: 25,
+    color: '#000',
+  },
+  modalInnerView: {
+    flex: 1,
+  },
+  modalCloseButton: {
+    width: 'auto',
+    height: 'auto',
+    backgroundColor: '#aaa',
+    alignItems: 'center',
+    opacity: 60,
     borderRadius: 20,
   },
 });
