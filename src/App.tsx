@@ -16,6 +16,8 @@ import { useEffectAsync } from './hooks';
 import { HomeScreen } from './components/Home';
 import { AuthContextProvider } from './contexts';
 import StackHeader from './components/StackHeader/StackHeader';
+import { ForumsScreen } from './components/ForumsScreen';
+import { ChatScreen } from './components/Chat';
 
 const Stack = createStackNavigator<StackNavigation>();
 
@@ -28,7 +30,9 @@ const App: FC = () => {
     <AuthContextProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={screenOptionStyles}>
-          <Stack.Screen name="HOME" component={HomeScreen} />
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Forums" component={ForumsScreen} />
+          <Stack.Screen name="ChatRoom" component={ChatScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthContextProvider>
