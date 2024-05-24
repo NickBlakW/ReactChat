@@ -14,7 +14,8 @@ const LoginScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
   theme: {
-    backgroundColor: '#343',
+    width: '100%',
+    backgroundColor: '#333',
     color: 'aliceblue',
   },
 });

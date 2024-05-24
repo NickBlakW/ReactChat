@@ -20,8 +20,8 @@ export const AuthContextValue = (): AuthContextHook => {
   const [initializing, setInitializing] = useState<boolean>(true);
   const [user, setUser] = useState<FirebaseUser>(null);
 
-  const handleAuthStateChanged = (user: any) => {
-    setUser(user);
+  const handleAuthStateChanged = (loggedUser: any) => {
+    setUser(loggedUser);
     if (initializing) {
       setInitializing(false);
     }
@@ -90,5 +90,10 @@ export const AuthContextValue = (): AuthContextHook => {
   };
   //#endregion
 
-  return { user, signInWithGoogle, signInWithFacebook, logoutFromProvider };
+  return {
+    user,
+    signInWithGoogle,
+    signInWithFacebook,
+    logoutFromProvider,
+  };
 };

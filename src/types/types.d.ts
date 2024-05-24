@@ -1,4 +1,10 @@
 declare type StackNavigation = {
-  LOGIN: undefined;
-  HOME: undefined;
+  Home: undefined;
+  Forums: undefined;
+  ChatRoom: undefined;
+};
+
+declare type ForumData = {
+  id: string;
+  name: string;
 };
