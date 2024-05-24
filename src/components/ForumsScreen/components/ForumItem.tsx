@@ -10,8 +10,8 @@ interface ForumItemProps {
 }
 
 const ForumItem: FC<ForumItemProps> = ({ data, navigation }) => {
-  const navigateToChatRoom = (name: string) => {
-    navigation.navigate('ChatRoom', { name });
+  const navigateToChatRoom = (forumName: string) => {
+    navigation.navigate('ChatRoom', { forumName });
   };
 
   const renderIconFromId = (id: string): JSX.Element => {
@@ -28,10 +28,10 @@ const ForumItem: FC<ForumItemProps> = ({ data, navigation }) => {
   return (
     <TouchableHighlight
       style={styles.forumItem}
-      onPress={() => navigateToChatRoom(data.name)}>
+      onPress={() => navigateToChatRoom(data.forumName)}>
       <View style={styles.forumInnerView}>
         {renderIconFromId(data.id)}
-        <Text style={styles.forumItemText}>{data.name}</Text>
+        <Text style={styles.forumItemText}>{data.forumName}</Text>
       </View>
     </TouchableHighlight>
   );

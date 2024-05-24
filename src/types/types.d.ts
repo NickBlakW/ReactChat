@@ -1,10 +1,10 @@
 declare type StackNavigation = {
   Home: undefined;
   Forums: undefined;
-  ChatRoom: { name: string } | undefined;
+  ChatRoom: { forumName: string } | undefined;
 };
 
 declare type ForumData = {
   id: string;
-  name: string;
+  forumName: string;
 };
