@@ -1,5 +1,5 @@
-import { LoginScreen } from '../../../components/Login';
-import { useAuth } from '../../../contexts';
+import { LoginScreen } from '../Login';
+import { useAuth } from '../../contexts';
 import React, { FC } from 'react';
 import {
   Button,

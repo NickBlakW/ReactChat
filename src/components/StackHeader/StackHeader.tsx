@@ -1,7 +1,7 @@
 import { Image, Pressable, View, StyleSheet, Text } from 'react-native';
 import { useAuth } from '../../contexts';
 import React, { useState } from 'react';
-import OptionsModal from './components/OptionsModal';
+import OptionsModal from '../common/OptionsModal';
 
 const StackHeader: React.FC = () => {
   const { user, logoutFromProvider } = useAuth();
