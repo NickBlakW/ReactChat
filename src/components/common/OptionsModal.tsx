@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 interface OptionsModalProps {
   isOpen: boolean;
@@ -17,8 +18,10 @@ interface OptionsModalProps {
 
 const OptionsModal: FC<OptionsModalProps> = ({ isOpen, setIsOpen }) => {
   const { user, logoutFromProvider } = useAuth();
+  const navigation = useNavigation();
 
   const onModalLogoutPress = async () => {
+    navigation.navigate('Home' as never);
     setIsOpen(!isOpen);
     await logoutFromProvider();
   };

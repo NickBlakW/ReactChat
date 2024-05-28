@@ -1,53 +1,42 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useAuth } from '../../contexts';
 import React, { FC, useCallback, useEffect, useState } from 'react';
-import { Text } from 'react-native';
 import { GiftedChat, IMessage } from 'react-native-gifted-chat';
-import firestore, { onSnapshot } from '@react-native-firebase/firestore';
+import firestore from '@react-native-firebase/firestore';
+import { StyleSheet, Text, View } from 'react-native';
+import PushNotification from 'react-native-push-notification';
 
 type ChatScreenProps = NativeStackScreenProps<StackNavigation, 'ChatRoom'>;
 
-const ChatScreen: FC<ChatScreenProps> = ({ route, navigation }) => {
+const ChatScreen: FC<ChatScreenProps> = ({ route }) => {
   const { forumName }: any = route.params;
   const { user } = useAuth();
 
   const [messages, setMessages] = useState<IMessage[]>([]);
 
   useEffect(() => {
-    setMessages([
-      {
-        _id: 1,
-        text: `Welcome to the ${forumName} forum!`,
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'ReactChat',
-          avatar: 'https://commons.wikimedia.org/wiki/File:React-icon.svg',
-        },
-      },
-    ]);
-  }, []);
+    const unsubscribe = firestore()
+      .collection(`Chats`)
+      .orderBy('createdAt', 'desc')
+      .onSnapshot(snapshot => {
+        const chatMessages = snapshot.docs.filter(
+          doc => doc.data().chat === `${forumName}`,
+        );
 
-  useEffect(() => {
-    const q = firestore()
-      .collection(`Chat_${forumName}`)
-      .orderBy('createdBy', 'desc');
-
-    const unsubscribe = onSnapshot(q, snapshot =>
-      setMessages(
-        snapshot.docs.map(doc => ({
-          _id: doc.data()._id,
-          createdAt: doc.data().createdAt.toDate(),
-          text: doc.data().text,
-          user: doc.data().user,
-        })),
-      ),
-    );
+        setMessages(
+          chatMessages.map(doc => ({
+            _id: doc.data()._id,
+            createdAt: doc.data().createdAt.toDate(),
+            text: doc.data().text,
+            user: doc.data().user,
+          })),
+        );
+      });
 
     return () => {
       unsubscribe;
     };
-  }, [navigation]);
+  }, []);
 
   const onSendMessage = useCallback(async (messages: IMessage[]) => {
     setMessages(previousMessages =>
@@ -55,20 +44,39 @@ const ChatScreen: FC<ChatScreenProps> = ({ route, navigation }) => {
     );
     const { _id, createdAt, text, user } = messages[0];
 
-    await firestore().collection(`Chat_${forumName}`).add({
-      _id,
-      createdAt,
-      text,
-      user,
+    await firestore()
+      .collection(`Chats`)
+      .add({
+        _id,
+        createdAt,
+        chat: `${forumName}`,
+        text,
+        user,
+      });
+
+    const notificationKey = createdAt.toString();
+    PushNotification.createChannel(
+      {
+        channelId: notificationKey,
+        channelName: `${forumName}`,
+      },
+      created => console.log(created),
+    );
+
+    PushNotification.localNotification({
+      channelId: notificationKey,
+      title: `New message on ${forumName}`,
+      message: text,
     });
   }, []);
 
   return (
     <>
-      <Text>{forumName}</Text>
+      <View style={styles.chatBackground}>
+        <Text style={styles.chatBackgroundText}>{forumName}</Text>
+      </View>
       <GiftedChat
         messages={messages}
-        showAvatarForEveryMessage={true}
         onSend={messages => onSendMessage(messages)}
         user={{
           _id: user?.email || '',
@@ -79,5 +87,20 @@ const ChatScreen: FC<ChatScreenProps> = ({ route, navigation }) => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  chatBackground: {
+    zIndex: -1,
+    flex: 1,
+    alignSelf: 'center',
+    justifyContent: 'center',
+  },
+  chatBackgroundText: {
+    fontSize: 50,
+    color: '#00000022',
+    textAlignVertical: 'center',
+    textAlign: 'center',
+  },
+});
 
 export default ChatScreen;

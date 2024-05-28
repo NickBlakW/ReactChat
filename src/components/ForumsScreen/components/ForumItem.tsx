@@ -16,9 +16,9 @@ const ForumItem: FC<ForumItemProps> = ({ data, navigation }) => {
 
   const renderIconFromId = (id: string): JSX.Element => {
     switch (id) {
-      case 'open':
+      case 'Open':
         return <MaterialIcon style={styles.forumIcon} name="forum" />;
-      case 'programming':
+      case 'Programming':
         return <FontAwesomeIcon style={styles.forumIcon} name="code" />;
       default:
         return <></>;
@@ -29,9 +29,12 @@ const ForumItem: FC<ForumItemProps> = ({ data, navigation }) => {
     <TouchableHighlight
       style={styles.forumItem}
       onPress={() => navigateToChatRoom(data.forumName)}>
-      <View style={styles.forumInnerView}>
-        {renderIconFromId(data.id)}
-        <Text style={styles.forumItemText}>{data.forumName}</Text>
+      <View style={styles.forumView}>
+        {renderIconFromId(data.forumName)}
+        <View style={styles.forumInnerView}>
+          <Text style={styles.forumItemText}>{data.forumName}</Text>
+          <Text style={styles.forumItemTextSmall}>{data.description}</Text>
+        </View>
       </View>
     </TouchableHighlight>
   );
@@ -52,19 +55,27 @@ const styles = StyleSheet.create({
   },
   forumIcon: {
     marginRight: 15,
-    fontSize: 20,
-    width: 20,
-    height: 20,
+    fontSize: 25,
+    width: 30,
+    height: 30,
     color: '#fff',
     alignSelf: 'center',
   },
-  forumInnerView: {
+  forumView: {
     flexDirection: 'row',
     alignSelf: 'center',
+  },
+  forumInnerView: {
+    flexDirection: 'column',
+    textAlign: 'center',
   },
   forumItemText: {
     color: '#aaa',
     fontSize: 20,
+  },
+  forumItemTextSmall: {
+    color: '#aaa',
+    fontSize: 14,
   },
 });
 

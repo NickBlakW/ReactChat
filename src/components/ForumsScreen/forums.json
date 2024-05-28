@@ -1,14 +1,14 @@
 [
   {
-    "id": "open",
-    "forumName": "Open"
+    "forumName": "Open",
+    "description": ""
   },
   {
-    "id": "programming",
-    "forumName": "Programming"
+    "forumName": "Programming",
+    "description": ""
   },
   {
-    "id": "test",
-    "forumName": "Test"
+    "forumName": "Test",
+    "description": "Just for testing"
   }
 ]

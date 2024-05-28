@@ -5,6 +5,6 @@ declare type StackNavigation = {
 };
 
 declare type ForumData = {
-  id: string;
   forumName: string;
+  description: string;
 };
