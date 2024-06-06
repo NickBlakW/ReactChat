@@ -70,6 +70,7 @@ const ChatScreen: FC<ChatScreenProps> = ({ route }) => {
 
         if (progress === 100) {
           console.log('image uploaded');
+          snapshot.ref.getDownloadURL().then(dl => setDownloadUrl(dl));
         }
       },
       error => {
@@ -90,7 +91,10 @@ const ChatScreen: FC<ChatScreenProps> = ({ route }) => {
       if (shouldAttachImage && imagePath) {
         await uploadImage();
 
-        console.log('url for img: ', downloadUrl);
+        if (downloadUrl === '') {
+          console.log('aborting');
+          return;
+        }
 
         const newMessage = {
           _id: messageToAdd._id,
