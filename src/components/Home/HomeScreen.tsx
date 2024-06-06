@@ -5,9 +5,6 @@ import { View, StyleSheet, Button } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { OptionsModal } from '../common';
 import LoggedInScreen from './components/LoggedInScreen/LoggedInScreen';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../../../firebase';
-import firestore from '@react-native-firebase/firestore';
 
 type HomeScreenProps = NativeStackScreenProps<StackNavigation, 'Home'>;
 
@@ -31,15 +28,8 @@ const HomeScreen: FC<HomeScreenProps> = ({ navigation }) => {
     setIsModalOpen(!isModalOpen);
   };
 
-  const handleDbClick = async () => {
-    await firestore().collection('test').add({
-      message: 'firestore works',
-    });
-  };
-
   return (
     <View style={styles.homeView}>
-      <Button title="TEST DB" onPress={handleDbClick} />
       {user ? (
         <LoggedInScreen
           navigation={navigation}

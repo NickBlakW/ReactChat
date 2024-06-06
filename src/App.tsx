@@ -5,7 +5,7 @@
  * @format
  */
 import * as React from 'react';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import {
   StackNavigationOptions,
   createStackNavigator,
@@ -18,12 +18,25 @@ import { AuthContextProvider } from './contexts';
 import StackHeader from './components/StackHeader/StackHeader';
 import { ForumsScreen } from './components/ForumsScreen';
 import { ChatScreen } from './components/Chat';
+import { Alert, PermissionsAndroid } from 'react-native';
+import messaging from '@react-native-firebase/messaging';
 
 const Stack = createStackNavigator<StackNavigation>();
 
 const App: FC = () => {
   useEffectAsync(async () => {
     await BootSplash.hide({ fade: true });
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+      );
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
   }, []);
 
   return (

@@ -14,14 +14,12 @@ const ForumItem: FC<ForumItemProps> = ({ data, navigation }) => {
     navigation.navigate('ChatRoom', { forumName });
   };
 
-  const renderIconFromId = (id: string): JSX.Element => {
-    switch (id) {
-      case 'Open':
+  const renderSpecialIcons = (name: string): JSX.Element => {
+    switch (name) {
+      case 'forum':
         return <MaterialIcon style={styles.forumIcon} name="forum" />;
-      case 'Programming':
-        return <FontAwesomeIcon style={styles.forumIcon} name="code" />;
       default:
-        return <></>;
+        return <FontAwesomeIcon style={styles.forumIcon} name={name} />;
     }
   };
 
@@ -30,7 +28,7 @@ const ForumItem: FC<ForumItemProps> = ({ data, navigation }) => {
       style={styles.forumItem}
       onPress={() => navigateToChatRoom(data.forumName)}>
       <View style={styles.forumView}>
-        {renderIconFromId(data.forumName)}
+        {renderSpecialIcons(data.iconName)}
         <View style={styles.forumInnerView}>
           <Text style={styles.forumItemText}>{data.forumName}</Text>
           <Text style={styles.forumItemTextSmall}>{data.description}</Text>
@@ -52,6 +50,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'center',
     height: 80,
+    borderRadius: 8,
   },
   forumIcon: {
     marginRight: 15,

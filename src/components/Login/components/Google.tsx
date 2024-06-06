@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-} from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useEffect } from 'react';
 import { useAuth } from '../../../contexts/auth/AuthContext';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
@@ -23,11 +20,6 @@ const GoogleLogin: React.FC = () => {
   }, []);
 
   return (
-    // <GoogleSigninButton
-    //   size={GoogleSigninButton.Size.Wide}
-    //   color={GoogleSigninButton.Color.Dark}
-    //   onPress={signInWithGoogle}
-    // />
     <FontAwesomeIcon.Button
       name="google"
       backgroundColor="#3b5998"

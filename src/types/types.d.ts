@@ -7,4 +7,5 @@ declare type StackNavigation = {
 declare type ForumData = {
   forumName: string;
   description: string;
+  iconName: string;
 };
