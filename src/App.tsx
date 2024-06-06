@@ -16,7 +16,7 @@ import { useEffectAsync } from './hooks';
 import { AuthContextProvider } from './contexts';
 import StackHeader from './components/StackHeader/StackHeader';
 import { ForumsScreen } from './components/Forums';
-import { Alert, PermissionsAndroid } from 'react-native';
+import { Alert } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import { HomeScreen, ChatScreen } from './screens';
 
@@ -29,9 +29,6 @@ const App: FC = () => {
 
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
-      );
       Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
     });
 
