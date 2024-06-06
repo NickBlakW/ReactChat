@@ -1,5 +1,5 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useAuth } from '../../../../contexts';
+import { useAuth } from '../../contexts';
 import React, { FC } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 

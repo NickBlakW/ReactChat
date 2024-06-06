@@ -1,1 +1,1 @@
-export { default as imageUtils } from './imageUtils';
+export { default as reformatImageUri } from './imageUtils';

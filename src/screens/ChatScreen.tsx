@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { useAuth } from '../../contexts';
+import { useAuth } from '../contexts';
 import React, { FC, useCallback, useEffect, useState } from 'react';
 import { Actions, GiftedChat, IMessage } from 'react-native-gifted-chat';
 import firestore from '@react-native-firebase/firestore';
@@ -10,8 +10,8 @@ import {
   launchImageLibrary,
 } from 'react-native-image-picker';
 import { firebase } from '@react-native-firebase/storage';
-import { renderBubble, renderSend } from './components';
-import reformatImageUri from './utils/imageUtils';
+import { renderBubble, renderSend } from '../components/Chat';
+import reformatImageUri from '../components/Chat/utils/imageUtils';
 
 type ChatScreenProps = NativeStackScreenProps<StackNavigation, 'ChatRoom'>;
 

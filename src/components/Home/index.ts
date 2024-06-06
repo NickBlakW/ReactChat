@@ -1,1 +1,2 @@
-export { default as HomeScreen } from './HomeScreen';
+export { default as LoggedInScreen } from './LoggedInScreen';
+export { default as LogoutButton } from './LogoutButton';

@@ -9,10 +9,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import ForumItem from './components/ForumItem';
+import ForumItem from '../components/Forums/ForumItem';
 import firestore from '@react-native-firebase/firestore';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import ForumModal from './components/ForumModal';
+import ForumModal from '../components/Forums/ForumModal';
 
 type ForumScreenProps = NativeStackScreenProps<StackNavigation, 'Forums'>;
 
