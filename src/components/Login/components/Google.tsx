@@ -1,10 +1,9 @@
 import * as React from 'react';
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-} from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useEffect } from 'react';
 import { useAuth } from '../../../contexts/auth/AuthContext';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { StyleSheet } from 'react-native';
 
 const GoogleLogin: React.FC = () => {
   const { signInWithGoogle } = useAuth();
@@ -21,12 +20,21 @@ const GoogleLogin: React.FC = () => {
   }, []);
 
   return (
-    <GoogleSigninButton
-      size={GoogleSigninButton.Size.Wide}
-      color={GoogleSigninButton.Color.Dark}
+    <FontAwesomeIcon.Button
+      name="google"
+      backgroundColor="#3b5998"
       onPress={signInWithGoogle}
-    />
+      style={styles.googleButton}>
+      Sign in with Google
+    </FontAwesomeIcon.Button>
   );
 };
+
+const styles = StyleSheet.create({
+  googleButton: {
+    width: '100%',
+    justifyContent: 'center',
+  },
+});
 
 export default GoogleLogin;

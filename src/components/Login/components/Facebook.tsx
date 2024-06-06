@@ -19,7 +19,8 @@ const FacebookLogin: React.FC = () => {
 
 const styles = StyleSheet.create({
   fbButton: {
-    width: '80%',
+    width: '100%',
+    justifyContent: 'center',
   },
 });
 
