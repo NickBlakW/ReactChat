@@ -13,13 +13,12 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import BootSplash from 'react-native-bootsplash';
 import { useEffectAsync } from './hooks';
-import { HomeScreen } from './components/Home';
 import { AuthContextProvider } from './contexts';
 import StackHeader from './components/StackHeader/StackHeader';
-import { ForumsScreen } from './components/ForumsScreen';
-import { ChatScreen } from './components/Chat';
+import { ForumsScreen } from './components/Forums';
 import { Alert, PermissionsAndroid } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
+import { HomeScreen, ChatScreen } from './screens';
 
 const Stack = createStackNavigator<StackNavigation>();
 

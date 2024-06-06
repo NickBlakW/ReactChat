@@ -1,4 +1,4 @@
-import { LoginScreen } from '../Login';
+import { Login } from '../Login';
 import { useAuth } from '../../contexts';
 import React, { FC } from 'react';
 import {
@@ -43,7 +43,7 @@ const OptionsModal: FC<OptionsModalProps> = ({ isOpen, setIsOpen }) => {
           </View>
           <View style={styles.modalInnerView}>
             {!user ? (
-              <LoginScreen />
+              <Login />
             ) : (
               <Button title={'Sign Out'} onPress={onModalLogoutPress} />
             )}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useEffect } from 'react';
-import { useAuth } from '../../../contexts/auth/AuthContext';
+import { useAuth } from '../../../contexts';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { StyleSheet } from 'react-native';
 
